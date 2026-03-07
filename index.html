@@ -101,7 +101,9 @@
     <li>We want to focus on other projects that we think are more important.</li>
   </ul>
   <h2>What about my data?</h2>
-  <p>BetterMode will delete all data relating to Bweeter on May 14th, 2026.</p>
+  <p>BetterMode will delete all data relating to Bweeter on May 14th, 2026 (60 days after shutdown). They do not
+    provide an option for exporting your data, so if you'd like save data, you will have to do so manually (screenshots,
+    copy and paste, etc).</p>
   <h2>What's next?</h2>
   <p>We don't have any plans to bring back Bweeter in the near future. However, we are currently working on a new
     service, ButterDog Chat Ultra Deluxe. Join our Discord to learn more and stay up to date.</p>
@@ -174,31 +176,45 @@
       <td>18</td>
     </tr>
   </table>
+  <h2 class="pre-shutdown" hidden>You can still visit Bweeter for <span id="days-remaining">3</span></h2>
+  <p class="pre-shutdown" hidden>If you'd like to view Bweeter again before it shuts down, you can do so here: <a
+      href="https://bweeter.bettermode.io">https://bweeter.bettermode.io</a>.</p>
 
   <footer>
     <p>Thank you to everyone who used Bweeter, and posted the craziest stuff on there.</p>
-    <p>Join our Discord at <a href="https://discord.gg/KZzVM4rfg6">https://discord.gg/KZzVM4rfg6</a></p>
-    <p>Visit our main website at <a href="https://butterdogco.com">https://butterdogco.com</a></p>
+    <p>Join our Discord at <a href="https://discord.gg/KZzVM4rfg6">https://discord.gg/KZzVM4rfg6</a>.</p>
+    <p>Visit our main website at <a href="https://butterdogco.com">https://butterdogco.com</a>.</p>
+    <p>If you have any questions or concerns, feel free to email us at <a
+        href="mailto:bweeter@butterdogco.com">bweeter@butterdogco.com</a>.</p>
+    <p>If you have any questions or concerns regarding your data, or anything else related to BetterMode, you may email
+      them at <a href="mailto:jacob@bettermode.com">jacob@bettermode.com</a></p>
   </footer>
 
   <script type="module">
     const shutdownDate = new Date('March 15, 2026');
     const now = new Date();
-    const futureTenseElementCount = 4;
-    const futureTenseElements = [
+    const pastTenseElementCount = 4;
+    const futureTenseReplacements = [
       'is shutting down on',
       'is shutting down',
       'was using) is removing',
       'we\'ve been using'
-    ]
+    ];
+    const preShutdownElements = document.querySelectorAll('.pre-shutdown');
+    const daysRemainingElement = document.getElementById('days-remaining');
 
-    for (let i = 1; i <= futureTenseElementCount; i++) {
-      const element = document.getElementById(`past-tense-${i}`);
-      if (!element) continue;
-
-      if (now < shutdownDate) {
-        element.textContent = futureTenseElements[i - 1];
+    if (now < shutdownDate) {
+      for (let i = 1; i <= pastTenseElementCount; i++) {
+        const element = document.getElementById(`past-tense-${i}`);
+        if (!element) continue;
+        element.textContent = futureTenseReplacements[i - 1];
       }
+
+      const timeDiff = shutdownDate - now;
+      const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+      daysRemainingElement.textContent = daysRemaining + " more day" + (daysRemaining !== 1 ? "s" : "");
+
+      preShutdownElements.forEach(el => el.hidden = false);
     }
   </script>
 </body>
