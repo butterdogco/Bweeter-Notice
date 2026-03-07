@@ -5,30 +5,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bweeter Notice</title>
+  <link rel="icon" type="image/ico" href="favicon.ico">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
     html,
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
+      background-color: #27282b;
+      color: #f4f7fe;
       margin: 0;
+      padding: 20px;
     }
 
     body {
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
-      padding: 20px;
+      background-color: #171719;
+      border-radius: 0.5rem;
+    }
+
+    .logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
     }
 
     h1 {
-      color: #ff4500;
+      color: #e77506;
     }
 
     a {
-      color: #1e90ff;
+      color: #74baff;
       text-decoration: underline;
     }
 
@@ -39,12 +51,11 @@
 
       th {
         text-align: left;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #555;
       }
 
       td {
         padding: 4px;
-        text-wrap: break-word;
         word-break: break-all;
       }
 
@@ -56,12 +67,28 @@
     footer {
       margin-top: 40px;
       padding-top: 20px;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #555;
+    }
+
+    @media (max-width: 600px) {
+      html,
+      body {
+        padding: 10px;
+      }
+
+      table {
+        font-size: 14px;
+
+        td {
+          padding: 2px;
+        }
+      }
     }
   </style>
 </head>
 
 <body>
+  <img src="img/logo wide.png" class="logo" alt="Bweeter Logo" height="120">
   <h1>Bweeter has shutdown, as of March 15th, 2026</h1>
   <h2>Why?</h2>
   <p>There are a few reasons why Bweeter is shutting down:</p>
