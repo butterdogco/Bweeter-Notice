@@ -71,6 +71,7 @@
     }
 
     @media (max-width: 600px) {
+
       html,
       body {
         padding: 10px;
@@ -89,17 +90,18 @@
 
 <body>
   <img src="img/logo wide.png" class="logo" alt="Bweeter Logo" height="120">
-  <h1>Bweeter has shutdown, as of March 15th, 2026</h1>
+  <h1>Bweeter <span id="past-tense-1">has shutdown, as of</span> March 15th, 2026</h1>
   <h2>Why?</h2>
-  <p>There are a few reasons why Bweeter is shutting down:</p>
+  <p>There are a few reasons why Bweeter <span id="past-tense-2">has shutdown</span>:</p>
   <ul>
-    <li>BetterMode (which Bweeter runs on) is removing their free plan, which we've been using. We can't switch to a
-      paid plan because they charge an outrageous amount ($499/month at minimum).</li>
+    <li>BetterMode (which Bweeter <span id="past-tense-3">used) has removed</span> their free plan, which <span
+        id="past-tense-4">we were using</span>. We can't switch to a paid plan because they charge an outrageous amount
+      ($499/month at minimum).</li>
     <li>It was cool to have, but it was never really popular, and we don't have the resources to maintain it.</li>
     <li>We want to focus on other projects that we think are more important.</li>
   </ul>
   <h2>What about my data?</h2>
-  <p>BetterMode will delete all data relating to Bweeter by May 14th, 2026.</p>
+  <p>BetterMode will delete all data relating to Bweeter on May 14th, 2026.</p>
   <h2>What's next?</h2>
   <p>We don't have any plans to bring back Bweeter in the near future. However, we are currently working on a new
     service, ButterDog Chat Ultra Deluxe. Join our Discord to learn more and stay up to date.</p>
@@ -172,12 +174,33 @@
       <td>18</td>
     </tr>
   </table>
-  
+
   <footer>
     <p>Thank you to everyone who used Bweeter, and posted the craziest stuff on there.</p>
     <p>Join our Discord at <a href="https://discord.gg/KZzVM4rfg6">https://discord.gg/KZzVM4rfg6</a></p>
     <p>Visit our main website at <a href="https://butterdogco.com">https://butterdogco.com</a></p>
   </footer>
+
+  <script type="module">
+    const shutdownDate = new Date('March 15, 2026');
+    const now = new Date();
+    const futureTenseElementCount = 4;
+    const futureTenseElements = [
+      'is shutting down on',
+      'is shutting down',
+      'was using) is removing',
+      'we\'ve been using'
+    ]
+
+    for (let i = 1; i <= futureTenseElementCount; i++) {
+      const element = document.getElementById(`past-tense-${i}`);
+      if (!element) continue;
+
+      if (now < shutdownDate) {
+        element.textContent = futureTenseElements[i - 1];
+      }
+    }
+  </script>
 </body>
 
 </html>
